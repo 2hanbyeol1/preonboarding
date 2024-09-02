@@ -8,6 +8,7 @@
 /components
 /constants
 /hooks
+/layout
 /pages
 /store
 /types

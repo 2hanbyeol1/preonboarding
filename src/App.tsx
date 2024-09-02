@@ -2,7 +2,11 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Modal from "./components/common/Modal";
-import Main from "./pages/Main";
+import MainLayout from "./layout/MainLayout";
+import LoginPage from "./pages/Login";
+import MainPage from "./pages/Main";
+import RegisterPage from "./pages/Register";
+import UserPage from "./pages/User";
 import useModalStore from "./store/modal.store";
 
 function App() {
@@ -11,7 +15,25 @@ function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Main />,
+      element: <MainLayout />,
+      children: [
+        {
+          path: "/",
+          element: <MainPage />,
+        },
+        {
+          path: "/login",
+          element: <LoginPage />,
+        },
+        {
+          path: "/register",
+          element: <RegisterPage />,
+        },
+        {
+          path: "/user",
+          element: <UserPage />,
+        },
+      ],
     },
   ]);
 

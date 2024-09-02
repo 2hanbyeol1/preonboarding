@@ -1,7 +1,7 @@
 import Todo from "../components/main/Todo";
 import { useGetTodos } from "../hooks/queries/todo/useTodo";
 
-function Main() {
+function MainPage() {
   const { data: todos, isPending, isError } = useGetTodos();
 
   if (isPending) return <div>loading...</div>;
@@ -21,4 +21,4 @@ function Main() {
   );
 }
 
-export default Main;
+export default MainPage;
