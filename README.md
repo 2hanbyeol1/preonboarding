@@ -1,50 +1,35 @@
-# React + TypeScript + Vite
+## 한달인턴 프리온보딩 - 프론트엔드(React)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### 폴더 구조
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```
+/apis
+/assets
+/components
+/constants
+/hooks
+/pages
+/store
+/types
+/utils
+App.js
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+[우테코(우아한테크코스) 프론트엔드 폴더 구조 톺아보기](https://puenti.tistory.com/99)
+[React Js — 8 best practices + Folder Structure](https://medium.com/@kthamodaran/react-8-best-practices-folder-structure-5dbda48a69e)
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+### 커밋 규칙
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+|  작업 타입  |           작업 내용            |
+| :---------: | :----------------------------: |
+|   ✨ feat   | 해당 파일에 새로운 기능이 생김 |
+|   🎉 add    | 없던 파일을 생성함, 초기 세팅  |
+|  🐛 bugfix  |           버그 수정            |
+| ♻️ refactor |         코드 리팩토링          |
+|   🩹 fix    |           코드 수정            |
+|   🚚 move   |         파일 옮김/정리         |
+|   🔥 del    |        기능/파일을 삭제        |
+|   🍻 test   |       테스트 코드를 작성       |
+|  💄 style   |              css               |
+|  🙈 gitfix  |         gitignore 수정         |
+|  🔨 script  | package.json 변경(npm 설치 등) |
