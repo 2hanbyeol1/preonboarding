@@ -10,3 +10,20 @@ export const client = axios.create({
 export const updateToken = (token: string) => {
   client.defaults.headers.Authorization = token ? `Bearer ${token}` : "";
 };
+
+client.interceptors.response.use(
+  (response) => {
+    return response;
+  },
+  (error) => {
+    if (axios.isAxiosError(error))
+      switch (error.response?.status) {
+        case 401:
+          console.log(401);
+          break;
+        default:
+          throw new Error(error.response?.data.message);
+      }
+    throw error;
+  }
+);
