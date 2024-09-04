@@ -1,4 +1,5 @@
 import { createBrowserRouter, redirect } from "react-router-dom";
+import CenteredLayout from "../layout/CenteredLayout";
 import MainLayout from "../layout/MainLayout";
 import LoginPage from "../pages/Login";
 import MainPage from "../pages/Main";
@@ -14,17 +15,23 @@ const router = createBrowserRouter([
         path: "/",
         element: <MainPage />,
       },
+    ],
+  },
+  {
+    path: "/",
+    element: <CenteredLayout />,
+    children: [
       {
-        path: "/login",
-        element: <LoginPage />,
+        path: "/register",
+        element: <RegisterPage />,
         loader() {
           if (sessionStorage.getItem("accessToken")) return redirect("/");
           return null;
         },
       },
       {
-        path: "/register",
-        element: <RegisterPage />,
+        path: "/login",
+        element: <LoginPage />,
         loader() {
           if (sessionStorage.getItem("accessToken")) return redirect("/");
           return null;
@@ -38,11 +45,11 @@ const router = createBrowserRouter([
           return null;
         },
       },
-      {
-        path: "*",
-        element: <div>Not Found</div>,
-      },
     ],
+  },
+  {
+    path: "*",
+    element: <div>Not Found</div>,
   },
 ]);
 

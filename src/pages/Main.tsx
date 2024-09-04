@@ -10,7 +10,6 @@ function MainPage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-center mb-3">Todo List</h1>
       <ul>
         {todos.map((todo) => (
           <li key={todo.id}>

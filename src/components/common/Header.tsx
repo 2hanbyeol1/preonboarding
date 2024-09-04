@@ -13,9 +13,9 @@ function Header() {
   };
 
   return (
-    <header className="fixed top-0 left-0 flex justify-center w-screen h-12 bg-white z-50">
+    <header className="fixed top-0 left-0 flex justify-center w-screen h-14 bg-blue-300 z-50">
       <div className="w-full max-w-[1440px] px-5 flex justify-between items-center">
-        <Button to="/">메인페이지</Button>
+        <Button to="/">TODO LIST</Button>
         <div className="flex gap-1">
           {isLoggedIn ? (
             <>

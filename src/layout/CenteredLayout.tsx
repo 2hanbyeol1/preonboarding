@@ -1,15 +1,15 @@
 import { Outlet } from "react-router-dom";
 import Header from "../components/common/Header";
 
-function MainLayout() {
+function CenteredLayout() {
   return (
     <>
       <Header />
-      <section className="max-w-[1440px] mt-20 mx-auto px-5">
+      <section className="fixed top-0 left-0 flex justify-center items-center w-screen h-screen">
         <Outlet />
       </section>
     </>
   );
 }
 
-export default MainLayout;
+export default CenteredLayout;

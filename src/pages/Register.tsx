@@ -20,6 +20,7 @@ function RegisterPage() {
 
   return (
     <div>
+      <h1 className="text-2xl font-bold text-center mb-3">Register</h1>
       <form className="flex flex-col gap-y-3" onSubmit={onSubmit(handleSubmit)}>
         <Input
           {...register("id", getRegisterOptions("아이디", true, 4))}
