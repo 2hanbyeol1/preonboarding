@@ -5,7 +5,7 @@ function MainLayout() {
   return (
     <>
       <Header />
-      <section className="max-w-[1440px] mt-20 mx-auto px-5">
+      <section className="max-w-[1440px] mt-14 mx-auto px-5">
         <Outlet />
       </section>
     </>
