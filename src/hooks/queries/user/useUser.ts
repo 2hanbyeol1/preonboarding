@@ -1,4 +1,5 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
 import { updateToken } from "../../../apis/api";
 import {
   getUser,
@@ -24,17 +25,21 @@ export const useRegister = () =>
     },
   });
 
-export const useLogin = () =>
-  useMutation({
+export const useLogin = () => {
+  const navigate = useNavigate();
+  return useMutation({
     mutationFn: (data: LoginType) => login(data),
     onSuccess: (response) => {
-      alert(`${response.nickname}님 환영합니다`);
+      alert(`${response.nickname}님 환영합니다!`);
+      sessionStorage.setItem("accessToken", `Bearer ${response.accessToken}`);
       updateToken(response.accessToken);
+      navigate("/");
     },
     onError: (error) => {
       alert(error.message);
     },
   });
+};
 
 export const useGetUser = () =>
   useQuery({
