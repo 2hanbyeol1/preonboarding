@@ -7,7 +7,7 @@ import { RegisterType } from "../types/user.type";
 import { getRegisterOptions } from "../utils/validation";
 
 function RegisterPage() {
-  const { mutate: registerUser, isPending } = useRegister();
+  const { mutate: registerUser } = useRegister();
   const {
     register,
     handleSubmit: onSubmit,
@@ -17,8 +17,6 @@ function RegisterPage() {
   const handleSubmit = (data: RegisterType) => {
     registerUser(data);
   };
-
-  if (isPending) return <div>loading...</div>;
 
   return (
     <div>

@@ -5,6 +5,7 @@ import Button from "../components/common/Button";
 import ErrorList from "../components/common/ErrorList";
 import ImageInput from "../components/common/ImageInput";
 import Input from "../components/common/Input";
+import { Loading } from "../components/common/Loading";
 import { userQueryKeys } from "../hooks/queries/user/queryKey";
 import { useGetUser, useUpdateProfile } from "../hooks/queries/user/useUser";
 import { ProfileFormType } from "../types/user.type";
@@ -38,7 +39,7 @@ function UserPage() {
     if (user) reset({ nickname: user.nickname });
   }, [user, reset]);
 
-  if (isGettingUser || isUpdatingProfile) return <div>loading...</div>;
+  if (isGettingUser || isUpdatingProfile) return <Loading />;
   if (isGetUserError || isUpdateProfileError)
     return <div>{getUserError?.message || updateUserError?.message}</div>;
 

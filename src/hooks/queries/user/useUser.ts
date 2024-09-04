@@ -14,16 +14,19 @@ import {
 } from "../../../types/user.type";
 import { userQueryKeys } from "./queryKey";
 
-export const useRegister = () =>
-  useMutation({
+export const useRegister = () => {
+  const navigate = useNavigate();
+  return useMutation({
     mutationFn: (data: RegisterType) => register(data),
     onSuccess: (response) => {
       alert(response.message);
+      navigate("/login");
     },
     onError: (error) => {
       alert(error.message);
     },
   });
+};
 
 export const useLogin = () => {
   const navigate = useNavigate();

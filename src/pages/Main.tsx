@@ -1,10 +1,11 @@
+import { Loading } from "../components/common/Loading";
 import Todo from "../components/main/Todo";
 import { useGetTodos } from "../hooks/queries/todo/useTodo";
 
 function MainPage() {
   const { data: todos, isPending, isError } = useGetTodos();
 
-  if (isPending) return <div>loading...</div>;
+  if (isPending) return <Loading />;
   if (isError) return <div>err</div>;
 
   return (
