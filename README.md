@@ -34,3 +34,15 @@ App.js
 |  💄 style   |              css               |
 |  🙈 gitfix  |         gitignore 수정         |
 |  🔨 script  | package.json 변경(npm 설치 등) |
+
+### 라이브러리
+
+추가로 사용한 라이브러리
+
+- react-hook-form
+  - 기본적으로 비제어 컴포넌트 방식으로 구현
+  - 실무에서 많이 사용
+  - custom hook을 만들지 않고 form을 쉽게 다룰 수 있음 -> 코드 단순화
+- class-variance-authority
+  - props에 따라 조건부로 컴포넌트를 스타일링
+  - 일관성 있는 UI 정리와 관리 -> 재사용성 높은 컴포넌트
