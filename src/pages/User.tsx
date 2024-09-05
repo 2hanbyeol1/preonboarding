@@ -86,7 +86,7 @@ function UserPage() {
         />
         <div className="font-thin">{user.id}</div>
         <Input
-          {...register("nickname", getRegisterOptions("닉네임", true, 4))}
+          {...register("nickname", getRegisterOptions("닉네임", true))}
           intent={isEditMode ? "secondary" : "transparent"}
           placeholder="nickname"
           fontSize="xl"
