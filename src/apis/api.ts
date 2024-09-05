@@ -15,15 +15,16 @@ export const updateToken = (token: string) => {
 client.interceptors.response.use(
   (response) => response,
   (error) => {
-    if (axios.isAxiosError(error))
+    if (axios.isAxiosError(error)) {
       switch (error.response?.status) {
         case 401:
           sessionStorage.removeItem("accessToken");
           router.navigate("/login");
           break;
-        default:
-          throw new Error(error.response?.data.message);
       }
+
+      throw new Error(error.response?.data.message);
+    }
     throw error;
   }
 );
