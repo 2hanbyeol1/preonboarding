@@ -15,7 +15,10 @@ function useModal() {
     document.body.style.overflow = "unset";
   };
 
-  return { open: handleModalOpen, close: handleModalClose };
+  return {
+    open: handleModalOpen,
+    close: handleModalClose,
+  };
 }
 
 export default useModal;

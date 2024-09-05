@@ -4,5 +4,5 @@ const todoQueryKey = "todo";
 
 export const todoQueryKeys = {
   all: [todoQueryKey] as const,
-  detail: (todoId: TodoType["id"]) => [todoQueryKey, todoId] as const,
+  detail: (userId: TodoType["userId"]) => [todoQueryKey, userId] as const,
 };

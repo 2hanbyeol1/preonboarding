@@ -1,4 +1,6 @@
+import { ReactNode } from "react";
+
 export type ModalOptionType = {
   title?: string;
-  contents: string[];
+  contents: string | string[] | ReactNode;
 };

@@ -8,9 +8,9 @@ export const getTodos = async () => {
   return response.data;
 };
 
-export const getTodoById = async (todoId: TodoType["id"]) => {
+export const getTodoByUserId = async (userId: TodoType["userId"]) => {
   const response = await axios.get(
-    `https://jsonplaceholder.typicode.com/todos/${todoId}`
+    `https://jsonplaceholder.typicode.com/todos?userId=${userId}`
   );
   return response.data;
 };
