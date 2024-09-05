@@ -22,10 +22,10 @@ const router = sentryCreateBrowserRouter([
         element: <MainPage />,
       },
       {
-        path: "/post/:postId/:userId",
+        path: "/post/:postId",
         element: <PostDetailPage />,
-        loader({ params }: { params: { postId: string; userId: string } }) {
-          if (!params.postId || !params.userId) return redirect("/");
+        loader({ params }: { params: { postId: string } }) {
+          if (!params.postId) return redirect("/");
           return null;
         },
       },

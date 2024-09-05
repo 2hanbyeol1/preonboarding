@@ -7,10 +7,7 @@ export interface PostProps {
 
 function Post({ post }: PostProps) {
   return (
-    <Link
-      to={`/post/${post.id}/${post.userId}`}
-      className="p-3 border-b border-gray-300"
-    >
+    <Link to={`/post/${post.id}`} className="p-3 border-b border-gray-300">
       <h2 className="text-lg font-bold">{post.title}</h2>
       <p>{post.body}</p>
     </Link>

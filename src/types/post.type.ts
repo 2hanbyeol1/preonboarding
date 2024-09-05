@@ -5,6 +5,11 @@ export type PostType = {
   body: string;
 };
 
+export type PostDetailType = PostType & {
+  comments: CommentType[];
+  user: UserType;
+};
+
 export type CommentType = {
   postId: PostType["id"];
   id: number;

@@ -2,16 +2,12 @@ import { useNavigate, useParams } from "react-router-dom";
 import Button from "../../components/common/Button";
 import { Loading } from "../../components/common/Loading";
 import UserModalContents from "../../components/main/UserModalContents";
-import {
-  useGetCommentsByPostId,
-  useGetPostDetailById,
-  useGetUserByUserId,
-} from "../../hooks/queries/post/usePost";
+import { useGetPostDetailById } from "../../hooks/queries/post/usePost";
 import useModal from "../../hooks/useModal";
 import { CommentType, PostType, UserType } from "../../types/post.type";
 
 function PostDetailPage() {
-  const { postId, userId } = useParams() as {
+  const { postId } = useParams() as {
     postId: PostType["id"];
     userId: UserType["id"];
   };
@@ -19,43 +15,22 @@ function PostDetailPage() {
   const navigate = useNavigate();
   const {
     data: post,
-    isPending: isGettingPostDetail,
-    isError: isGetPostError,
-    error: getPostError,
+    isPending,
+    isError,
+    error,
   } = useGetPostDetailById(postId);
-  const {
-    data: comments,
-    isPending: isGettingComments,
-    isError: isGetCommentsError,
-    error: getCommentsError,
-  } = useGetCommentsByPostId(postId);
-  const {
-    data: user,
-    isPending: isGettingUser,
-    isError: isGetUserError,
-    error: getUserError,
-  } = useGetUserByUserId(userId);
 
   if (!postId) {
     navigate("/");
     return <></>;
   }
 
-  if (isGettingPostDetail || isGettingComments || isGettingUser)
-    return <Loading />;
-  if (isGetPostError || isGetCommentsError || isGetUserError)
-    return (
-      <div>
-        🚨{" "}
-        {getPostError?.message ||
-          getCommentsError?.message ||
-          getUserError?.message}
-      </div>
-    );
+  if (isPending) return <Loading />;
+  if (isError) return <div>🚨 {error?.message}</div>;
 
   const handleUserClick = () => {
     modal.open({
-      contents: <UserModalContents user={user} />,
+      contents: <UserModalContents user={post.user} />,
     });
   };
 
@@ -75,10 +50,10 @@ function PostDetailPage() {
             <div className="flex items-center gap-3">
               <img
                 className="rounded-full"
-                src={`https://i.pravatar.cc/30?img=${user.id}`}
-                alt={user.username}
+                src={`https://i.pravatar.cc/30?img=${post.user.id}`}
+                alt={post.user.username}
               />
-              <div>{user.username}</div>
+              <div>{post.user.username}</div>
             </div>
           </Button>
         </div>
@@ -86,7 +61,7 @@ function PostDetailPage() {
       <div className="w-full h-0 border border-slate-200"></div>
       <div className="flex-grow-1">
         <ul className="flex flex-col gap-3 mr-3">
-          {comments.map((comment: CommentType) => (
+          {post.comments.map((comment: CommentType) => (
             <li key={comment.id}>
               <button className="font-semibold">{comment.email}</button>
               <p className="pl-4 text-slate-700">ㄴ {comment.body}</p>

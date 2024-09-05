@@ -5,7 +5,7 @@ import {
   getPosts,
   getUserByEmail as getUserByUserId,
 } from "../../../apis/post.api";
-import { CommentType, PostType, UserType } from "../../../types/post.type";
+import { PostDetailType, PostType } from "../../../types/post.type";
 import { postQueryKeys } from "./queryKey";
 
 export const useGetPosts = () =>
@@ -15,19 +15,12 @@ export const useGetPosts = () =>
   });
 
 export const useGetPostDetailById = (postId: PostType["id"]) =>
-  useQuery<PostType>({
+  useQuery<PostDetailType>({
     queryKey: postQueryKeys.detail(postId),
-    queryFn: async () => await getPostDetailById(postId),
-  });
-
-export const useGetCommentsByPostId = (postId: CommentType["postId"]) =>
-  useQuery<CommentType[]>({
-    queryKey: postQueryKeys.comment(postId),
-    queryFn: async () => await getCommentsByPostId(postId),
-  });
-
-export const useGetUserByUserId = (userId: UserType["id"]) =>
-  useQuery<UserType>({
-    queryKey: postQueryKeys.user(userId),
-    queryFn: async () => await getUserByUserId(userId),
+    queryFn: async () => {
+      const post = await getPostDetailById(postId);
+      const comments = await getCommentsByPostId(postId);
+      const user = await getUserByUserId(post.userId);
+      return { ...post, comments, user };
+    },
   });
