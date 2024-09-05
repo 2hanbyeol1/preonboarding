@@ -14,7 +14,7 @@ function Modal({ title, contents }: ModalOptionType) {
           ) : (
             <span></span>
           )}
-          <img className="w-6 h-6" src={x} onClick={close} />
+          <img className="w-6 h-6 cursor-pointer" src={x} onClick={close} />
         </header>
         <ModalContents contents={contents} />
       </div>
