@@ -1,3 +1,4 @@
+import * as Sentry from "@sentry/react";
 import { createBrowserRouter, redirect } from "react-router-dom";
 import CenteredLayout from "../layout/CenteredLayout";
 import MainLayout from "../layout/MainLayout";
@@ -7,7 +8,10 @@ import NotFound from "../pages/NotFound";
 import RegisterPage from "../pages/Register";
 import UserPage from "../pages/User";
 
-const router = createBrowserRouter([
+const sentryCreateBrowserRouter =
+  Sentry.wrapCreateBrowserRouter(createBrowserRouter);
+
+const router = sentryCreateBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,

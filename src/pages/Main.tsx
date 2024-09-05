@@ -3,10 +3,10 @@ import Todo from "../components/main/Todo";
 import { useGetTodos } from "../hooks/queries/todo/useTodo";
 
 function MainPage() {
-  const { data: todos, isPending, isError } = useGetTodos();
+  const { data: todos, isPending, isError, error } = useGetTodos();
 
   if (isPending) return <Loading />;
-  if (isError) return <div>err</div>;
+  if (isError) return <div className="text-center">🚨 {error.message}</div>;
 
   return (
     <div>

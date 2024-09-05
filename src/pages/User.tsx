@@ -41,7 +41,11 @@ function UserPage() {
 
   if (isGettingUser || isUpdatingProfile) return <Loading />;
   if (isGetUserError || isUpdateProfileError)
-    return <div>{getUserError?.message || updateUserError?.message}</div>;
+    return (
+      <div className="text-center">
+        🚨 {getUserError?.message || updateUserError?.message}
+      </div>
+    );
 
   const handleEditButtonClick = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
