@@ -7,10 +7,10 @@ function Modal({ title, contents }: ModalOptionType) {
 
   return (
     <div className="flex justify-center items-center fixed top-0 left-0 w-screen h-screen bg-[#00000080] z-[100]">
-      <div className="p-3 bg-white rounded-lg">
-        <header className="flex justify-between mb-3">
+      <div className="p-9 bg-white rounded-xl mx-3 max-w-[650px]">
+        <header className={`flex justify-between ${title ? "mb-3" : "-mb-3"}`}>
           {title ? (
-            <h3 className="text-base font-semibold text-center">{title}</h3>
+            <h3 className="text-2xl font-extrabold text-center">{title}</h3>
           ) : (
             <span></span>
           )}

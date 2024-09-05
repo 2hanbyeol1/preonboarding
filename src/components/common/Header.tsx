@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "./Button";
 
 function Header() {
@@ -15,7 +15,9 @@ function Header() {
   return (
     <header className="fixed top-0 left-0 flex justify-center w-screen h-14 bg-blue-300 z-50">
       <div className="w-full max-w-[1440px] px-5 flex justify-between items-center">
-        <Button to="/">TODO LIST</Button>
+        <Link className="text-xl font-black" to="/">
+          MAIN
+        </Link>
         <div className="flex gap-1">
           {isLoggedIn ? (
             <>

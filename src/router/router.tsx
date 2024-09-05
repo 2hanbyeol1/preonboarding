@@ -3,7 +3,8 @@ import { createBrowserRouter, redirect } from "react-router-dom";
 import CenteredLayout from "../layout/CenteredLayout";
 import MainLayout from "../layout/MainLayout";
 import LoginPage from "../pages/Login";
-import MainPage from "../pages/Main";
+import MainPage from "../pages/main/Main";
+import PostDetailPage from "../pages/main/PostDetail";
 import NotFound from "../pages/NotFound";
 import RegisterPage from "../pages/Register";
 import UserPage from "../pages/User";
@@ -19,6 +20,14 @@ const router = sentryCreateBrowserRouter([
       {
         path: "/",
         element: <MainPage />,
+      },
+      {
+        path: "/post/:postId/:userId",
+        element: <PostDetailPage />,
+        loader({ params }: { params: { postId: string; userId: string } }) {
+          if (!params.postId || !params.userId) return redirect("/");
+          return null;
+        },
       },
     ],
   },
