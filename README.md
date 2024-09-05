@@ -3,13 +3,14 @@
 ### 폴더 구조
 
 ```
+/__tests__
 /apis
 /assets
 /components
-/constants
 /hooks
 /layout
 /pages
+/router
 /store
 /types
 /utils
@@ -34,6 +35,7 @@ App.js
 |  💄 style   |              css               |
 |  🙈 gitfix  |         gitignore 수정         |
 |  🔨 script  | package.json 변경(npm 설치 등) |
+|   ✏️ docs   |         README.md 수정         |
 
 ### 라이브러리
 
